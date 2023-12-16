@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:4000',
+        target: 'https://todo-app-backend-i3mo.onrender.com',
         changeOrigin: true,
       }
     }
