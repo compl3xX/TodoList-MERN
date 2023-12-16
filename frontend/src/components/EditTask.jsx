@@ -1,9 +1,12 @@
 import React, { useState, useContext } from 'react'
 import { TodoDispatchContext } from "../context/Context";
 import axios from "axios"
+import api from "../utils/baseUrl";
 import './style.scss'
 
 const EditTask = ({ item }) => {
+
+    const baseUrl = import.meta.env.VITE_BASE_URL
 
     const [isEditing, setIsEditing] = useState(false);
 
@@ -16,7 +19,7 @@ const EditTask = ({ item }) => {
 
     const delHandler = (id) => {
 
-        axios.delete(`/api/deltodo/${id}?deleteType=1`).then((resp) => {
+        api.delete(`/api/deltodo/${id}?deleteType=1`).then((resp) => {
             console.log("Success", resp)
         }).catch((error) => {
             console.log(error)
@@ -58,7 +61,7 @@ const EditTask = ({ item }) => {
 
         data['isDone'] = !item.isDone
 
-        axios.put('/api/updatetodo/1', data).then((resp) => {
+        api.put(`/api/updatetodo/1`, data).then((resp) => {
             console.log('success', resp)
         }).catch((error) => {
             console.log(error)
@@ -112,7 +115,7 @@ const EditTask = ({ item }) => {
 
                                     console.log(data)
 
-                                    axios.put('/api/updatetodo/1', data).then((resp) => {
+                                    api.put(`/api/updatetodo/1`, data).then((resp) => {
                                         console.log('success', resp)
                                     }).catch((error) => {
                                         console.log(error)

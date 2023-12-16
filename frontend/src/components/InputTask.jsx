@@ -2,6 +2,7 @@ import { useContext, useState } from 'react'
 import { TodoDispatchContext } from "../context/Context";
 import { v4 as uuid } from 'uuid';
 import axios from 'axios'
+import api from "../utils/baseUrl";
 
 const InputTask = () => {
 
@@ -11,6 +12,7 @@ const InputTask = () => {
 
     const dispatch = useContext(TodoDispatchContext)
 
+    const baseUrl = import.meta.env.VITE_BASE_URL
 
 
     return (
@@ -46,7 +48,7 @@ const InputTask = () => {
                     content
                 }
 
-                axios.post('/api/addtodo', data).then((resp) => {
+                api.post(`/api/addtodo`, data).then((resp) => {
                     console.log(resp)
                 }).catch((error) => {
                     console.log(error)

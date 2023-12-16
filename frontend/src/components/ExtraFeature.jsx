@@ -4,13 +4,19 @@ import { TodoDispatchContext } from "../context/Context"
 
 import axios from 'axios'
 
+import api from "../utils/baseUrl"
+
+
+
 function ExtraFeature() {
+
+    const baseUrl = import.meta.env.VITE_BASE_URL
 
     const dispatch = useContext(TodoDispatchContext)
 
     const DeleteCompTask = () => {
 
-        axios.delete(`/api/deltodo/1?deleteType=2`).then((resp) => {
+        api.delete(`/api/deltodo/1?deleteType=2`).then((resp) => {
             console.log("Success", resp)
         }).catch((error) => {
             console.log(error)
@@ -22,7 +28,7 @@ function ExtraFeature() {
 
     const CompAllTask = () => {
 
-        axios.put('/api/updatetodo/2', { isDone: true }).then((resp) => {
+        api.put(`/api/updatetodo/2`, { isDone: true }).then((resp) => {
             console.log('success', resp)
         }).catch((error) => {
             console.log(error)

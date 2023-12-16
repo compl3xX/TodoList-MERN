@@ -4,9 +4,12 @@ import EditTask from "./EditTask";
 
 
 
+
+
 const DisplayTask = () => {
 
     const todos = useContext(TodoContext)
+    
 
     console.log(todos)
 
